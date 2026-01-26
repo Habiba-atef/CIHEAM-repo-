@@ -103,14 +103,74 @@ Output:
     Neighboring words threshold: 11
     Window for multiple hits: 40
     
-The profile matrix describes, for each position in the query protein, the probability (converted to log-odds scores) of observing each amino acid given the conserved sites found over the three iterations of PSI-BLAST. It summarizes evolutionary conservation information across related sequences found in the database
+The file profile.out contains the final PSI-BLAST position-specific scoring matrix (PSSM), showing for each residue position the log-odds substitution scores for all amino acids, their observed weighted frequencies, the information content per position, and the relative contribution of real matches versus pseudocounts, reflecting evolutionary conservation across homologous sequences.
 
+Exe6 
+- Create a FASTA file with the complete protein sequences of the matches of your protein search     with bit score > 200. You might find one-liners useful for this.
+- Compute a multiple alignment of these sequences with Clustal Omega. Check the available         output formats.
+- Build a HMM out of these aligned sequences with hmmbuild
+- Scan the HMM against your sequence collection with hmmerscan and write a short report on the     results.
 
+Steps :
+1.Extract BLAST hits into hits.fasta
 
+    awk '$12 > 200 {print $2}' test.faa.blast | sort -u > hit_ids.txt
+    seqkit grep -f hit_ids.txt uniprot_Atha.fasta > hits.fasta
+Output
 
+    head hits.fasta
+    
+    >sp|Q9LQE8|ARFN_ARATH Putative auxin response factor 14 OS=Arabidopsis thaliana           OX=3702 GN=ARF14 PE=3 SV=2
+    MESGNVVNTQPELSGIIDGSKSYMYEQLWKLCAGPLCDIPKLGEKVYYFPQGHIELVEAS
+    TREELNELQPICDFPSKLQCRVIAIQLKVENNSDETYAEITLMPDTTQVVIPTQNQNQFR
+    PLVNSFTKVLTASDTSVHGGFSVPKKHAIECLPPLDMSQPLPTQEILAIDLHGNQWRFRH
+    IYRGTAQRHLLTIGWNAFTTSKKLVEGDVIVFVRGETGELRVGIRRAGHQQGNIPSSIVS
+    IESMRHGIIASAKHAFDNQCMFIVVYKPRSSQFIVSYDKFLDVVNNKFNVGSRFTMRFEG
+    DDFSERRSFGTIIGVSDFSPHWKCSEWRSLEVQWDEFASFPRPNQVSPWDIEHLTPWSNV
+    SRSSFLKNKRSREVNEIGSSSSHLLPPTLTQGQEIGQQSMATPMNISLRYRDITEDAMTP
+    SRLLMSYPVQPMAKLNYNNVVTPIEENITTNAVASFRLFGVSLATPSVIKDPVEQIGLEI
+    SRLTQEKKFGQSQILRSPTEIQSKQFSSTRTCTKVQMQGVTIGRAVDLSVLNGYDQLILE
 
+2.Run Clustal Omega
 
+    clustalo -i hits.fasta -o hits.aln
 
+Output
+    
+    head hits.aln
+    
+    >sp|Q9LQE8|ARFN_ARATH Putative auxin response factor 14 OS=Arabidopsis thaliana          OX=3702 GN=ARF14 PE=3 SV=2
+    ------------------------------------------------------ME--SG
+    NVVNTQP-ELSGIIDGSKSYMYEQLWKLCAGPLCDIPKLGEKVYYFPQGHIELVEASTRE
+    ELN-ELQPICDFPSKLQCRVIAIQLKVENNSDETYAEITLMPDTTQVVIPTQN-------
+    -------QNQFRPLVNSFTKVLTASDTSVHGGFSVPKKHAIECLPPLDMSQPLPTQEILA
+    IDLHGNQWRFRHIYRGTAQRHLLTI--GWNAFTTSKKLVEGDVIVFVRGETGELRVGIRR
+    AGHQQGNIPSSI----------------VSIE--------------------------SM
+    RHGIIASAKHAFDNQCMFIVVYKP--RSSQFIVSYDKFLDVVNN-KFNVGSRFTMRFEGD
+    DFSE-RRSFGTIIGVSDF-SPHWKCSEWRSLEVQWDEFASFPRPNQVSPWDIEHLTPWSN
+    VSRSSFL---KNKRSREVNEIGSSS----------------------------SHLLPPT
 
+3.Build a HMM out of these aligned sequences with hmmbuild
+
+    hmmbuild mymodel.hmm hits.aln
+
+Output
+
+    # hmmbuild :: profile HMM construction from multiple sequence alignments
+    # HMMER 3.4 (Aug 2023); http://hmmer.org/
+    # Copyright (C) 2023 Howard Hughes Medical Institute.
+    # Freely distributed under the BSD open source license.
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    # input alignment file:             hits.aln
+    # output HMM file:                  mymodel.hmm
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    
+    # idx name                  nseq  alen  mlen eff_nseq re/pos description
+    #---- -------------------- ----- ----- ----- -------- ------ -----------
+    1     hits                    22  1361   670     1.43  0.590
+    
+    # CPU time: 0.32u 0.00s 00:00:00.32 Elapsed: 00:00:00.32
+
+4.
 
 
