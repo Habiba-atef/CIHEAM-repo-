@@ -87,9 +87,9 @@ Output
 	-rw-r--r-- 1 habiba habiba 91M Jan 20 22:12 SAMEA2569438.chr10.sam
 
 Observed file sizes
-SAM: 91 MB
-BAM: 31 MB
-CRAM: 17 MB
+SAM: 91MB
+BAM: 31MB
+CRAM: 17MB
 
 The SAM file is the largest because it stores alignment information in plain text f
 The BAM file is substantially smaller than the SAM file because it is a binary which make it more storage-efficient than SAM files.
@@ -112,7 +112,9 @@ I used the below prompt in gemini to fix the error :
 
 
 
-	-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 
 Exe3 3.1 Using samtools mpileup estimate the percentage of chr10 with depth > 100.
 
@@ -128,9 +130,4 @@ Output:
 
 Exe4 
 
-4.1 Outside Docker, open the URL https://igv.org/app in a browser and check the docs.
-4.2 Load the reference FASTA and index files with the Genome->Local File option.
-4.3 Load the gene annotation GTF file with the Tracks->Local File option.
-4.4 Load the BAM and index files with sorted, mapped reads with the Tracks->Local File option.
-4.5 Go to the chr location 10:9,768,000-9,784,000 and zoom in to display the reads, should look like:
 	
