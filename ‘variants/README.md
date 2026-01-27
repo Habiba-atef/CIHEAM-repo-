@@ -1,4 +1,5 @@
 Exercise 1: 
+
 1.1 Note that there are 2 FASTQ files with the same name but different numeric suffix, why?
 SAMEA2569438.chr10_1.fastq.gz → Read 1 (forward)
 SAMEA2569438.chr10_2.fastq.gz → Read 2 (reverse)
