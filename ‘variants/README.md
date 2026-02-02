@@ -142,6 +142,7 @@ No variants were removed during filtering.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Exercise 5
+
 5.5 Take a look to INDEL variant at 10:9,058,200-9,058,229. What are the reference and alternative alleles? It this position heterozygous in your mapped sample?
 
 REF = CAAAGGC
