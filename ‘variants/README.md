@@ -129,5 +129,43 @@ Output:
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Exe4 
+1. chr location 10:9,768,000-9,784,000
+<img width="1890" height="726" alt="9,768,000-9,784,000-app" src="https://github.com/user-attachments/assets/03cc20cc-6f22-41b7-b1f4-b166e932824d" />
 
-	
+2.How many variants have been filtered?
+Zero.
+No variants were removed during filtering.
+
+3.How many variants remain after the filtering?
+31991
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Exercise 5
+5.5 Take a look to INDEL variant at 10:9,058,200-9,058,229. What are the reference and alternative alleles? It this position heterozygous in your mapped sample?
+
+REF = CAAAGGC
+ALT = CAAAAGGC
+
+That this INDEL is homozygous in the sample, not heterozygous.
+0 reads support REF
+3 reads support ALT
+
+No evidence of the reference allele ,So this position is homozygous for the insertion
+
+
+5.6 Check the SNPs at 10:9,059,325-9,059,426. Are they all similar in terms of read dpeth (DP)?
+
+The SNPs in the region chr10:9,059,325–9,059,426 show depths between 5 and 8.
+While the values are not identical, they are all within a narrow range and therefore
+have broadly similar coverage. The depth variation is small and consistent with normal
+sequencing fluctuations.
+
+
+5.7 Examining the aligned reads supporting the SNPs at 10:10,000,166-10,000,226 by loading the BAM and index files. Do any of these fall into a gene model? Save the resulting image.
+The aligned reads clearly show several SNPs. However, the gene annotation track indicates that this region does not overlap any known gene model, so none of the
+SNPs fall within a gene.
+
+
+<img width="1890" height="726" alt="10,000,166-10,000,226-app" src="https://github.com/user-attachments/assets/3b117226-fb05-4204-aa70-3675e21e5cf7" />
+
