@@ -1,4 +1,4 @@
-Analysis of transcriptomes
+Analysis of transcriptome: 
 
 3.1) How many samples & isoforms are included in TPM_counts_Drought_W_dataset.csv? 
 There are 39 samples & 9,940 isoforms.
@@ -22,4 +22,5 @@ The hub isoform for the cyan module is Bradi1g00700.3.
 3.6) According to the module-trait association heat map, which module has the highest positive correlation with the "blwgrd (below ground biomass)" trait?
 According to the heatmap below, the violet module (MEviolet) has the highest positive correlation with the "blwgrd (below ground biomass)" trait with a correlation value of 0.66 and a highly significant p-value of (3e−04).
 <img width="546" height="825" alt="image" src="https://github.com/user-attachments/assets/3b032c14-64ab-4b4d-b6ff-2d0a576aaae4" />
+
 
